@@ -1,0 +1,15 @@
+on: 
+  - pull_request
+jobs:
+    build:
+      name: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-dotnet@v4.0.0
+        - run: |
+            dotnet restore
+            dotnet build --configuration Release --no-restore
+            dotnet test
+        # working-directory: $STI TIL DIT SHIT        
+      
